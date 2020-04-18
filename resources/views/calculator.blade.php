@@ -21,7 +21,7 @@
                         class="form-control"
                         name="widget-count"
                         type="number"
-                        value="{{ app('request')->input('widget-count') }}"
+                        value="{{ $widgetCount }}"
                     >
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -29,11 +29,11 @@
         </div>
     </div>
 
-    @if(app('request')->input('widget-count'))
+    @if($widgetCount !== null)
         <div class="card p-3 mt-2">
             <div class="card-body">
                 <div class="card-title">
-                    <h2>501 widgets require:</h2>
+                    <h2>{{ $widgetCount }} widgets require:</h2>
                 </div>
                 <table class="table w-75 mx-auto">
                     <thead>

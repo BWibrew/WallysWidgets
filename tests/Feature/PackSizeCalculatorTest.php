@@ -26,4 +26,14 @@ class PackSizeCalculatorTest extends TestCase
         $response->assertSee('<td>1</td>', false);
         $response->assertSee('<td>1</td>', false);
     }
+
+    public function testWidgetCountIsNumeric(): void
+    {
+        $response = $this->get('/?widget-count=foo');
+
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors([
+            'widget-count' => 'The widget-count must be a number.',
+        ]);
+    }
 }
