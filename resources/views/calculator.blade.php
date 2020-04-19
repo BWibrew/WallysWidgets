@@ -13,7 +13,7 @@
             <div class="card-title">
                 <h2>Calculate pack sizes</h2>
             </div>
-            <form method="get" target="/">
+            <form method="get" action="/">
                 <div class="form-group">
                     <label for="widget-count">No. of widgets</label>
                     <input
