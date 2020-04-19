@@ -61,11 +61,21 @@ class PacksCalculatorService
     }
 
     /**
+     * Return the Order as JSON like array.
      * @return array
      */
     public function getOrder(): array
     {
-        return $this->order;
+        $formattedOrder = [];
+        ksort($this->order);
+        foreach ($this->order as $packSize => $quantity) {
+            $formattedOrder[] = [
+                'packSize' => $packSize,
+                'quantity' => $quantity,
+            ];
+        }
+
+        return $formattedOrder;
     }
 
     /**

@@ -10,7 +10,10 @@ class PacksCalculatorServiceTest extends TestCase
     public function test1WidgetGives250PackSize(): void
     {
         $this->assertEquals(
-            [250 => 1],
+            [[
+                'packSize' => 250,
+                'quantity' => 1,
+            ]],
             (new PacksCalculatorService([250, 500, 1000, 2000, 5000]))->calculateOrder(1)->getOrder()
         );
     }
@@ -18,7 +21,10 @@ class PacksCalculatorServiceTest extends TestCase
     public function test250WidgetsGives250PackSize(): void
     {
         $this->assertEquals(
-            [250 => 1],
+            [[
+                'packSize' => 250,
+                'quantity' => 1,
+            ]],
             (new PacksCalculatorService([250, 500, 1000, 2000, 5000]))->calculateOrder(250)->getOrder()
         );
     }
@@ -26,7 +32,10 @@ class PacksCalculatorServiceTest extends TestCase
     public function test251WidgetsGives500PackSize(): void
     {
         $this->assertEquals(
-            [500 => 1],
+            [[
+                'packSize' => 500,
+                'quantity' => 1,
+            ]],
             (new PacksCalculatorService([250, 500, 1000, 2000, 5000]))->calculateOrder(251)->getOrder()
         );
     }
@@ -34,7 +43,16 @@ class PacksCalculatorServiceTest extends TestCase
     public function test501WidgetsGives250And500PackSize(): void
     {
         $this->assertEquals(
-            [250 => 1, 500 => 1],
+            [
+                [
+                    'packSize' => 250,
+                    'quantity' => 1,
+                ],
+                [
+                    'packSize' => 500,
+                    'quantity' => 1,
+                ],
+            ],
             (new PacksCalculatorService([250, 500, 1000, 2000, 5000]))->calculateOrder(501)->getOrder()
         );
     }
@@ -42,7 +60,20 @@ class PacksCalculatorServiceTest extends TestCase
     public function test12001WidgetsGives250And2000And5000And5000(): void
     {
         $this->assertEquals(
-            [250 => 1, 2000 => 1, 5000 => 2],
+            [
+                [
+                    'packSize' => 250,
+                    'quantity' => 1,
+                ],
+                [
+                    'packSize' => 2000,
+                    'quantity' => 1,
+                ],
+                [
+                    'packSize' => 5000,
+                    'quantity' => 2,
+                ],
+            ],
             (new PacksCalculatorService([250, 500, 1000, 2000, 5000]))->calculateOrder(12001)->getOrder()
         );
     }
