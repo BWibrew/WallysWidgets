@@ -20,8 +20,18 @@ class PackSizeCalculatorController extends Controller
             'widget-count' => 'numeric',
         ]);
 
+        $widgetCount = $request->input('widget-count');
+        $order = [];
+
+        if ($widgetCount !== null) {
+            $order = app('PacksCalculatorService')
+                ->calculateOrder($widgetCount)
+                ->getOrder();
+        }
+
         return view('calculator', [
-            'widgetCount' => $request->input('widget-count'),
+            'widgetCount' => $widgetCount,
+            'order' => $order,
         ]);
     }
 }

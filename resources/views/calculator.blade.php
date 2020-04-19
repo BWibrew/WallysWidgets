@@ -43,14 +43,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($order as $orderItem)
                         <tr>
-                            <th scope="row">500</th>
-                            <td>1</td>
+                            <th scope="row">{{ $orderItem['packSize'] }}</th>
+                            <td>{{ $orderItem['quantity'] }}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">250</th>
-                            <td>1</td>
-                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
