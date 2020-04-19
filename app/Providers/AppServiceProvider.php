@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Pack;
 use App\Services\PacksCalculatorService;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind('PacksCalculatorService', function () {
-            return new PacksCalculatorService([250, 500, 1000, 2000, 5000]);
+            return new PacksCalculatorService(Pack::pluck('size')->toArray());
         });
     }
 }
