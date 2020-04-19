@@ -2,7 +2,7 @@ FROM app:latest
 
 RUN set -eux; \
     apt-get update -y; \
-    apt-get install -y --no-install-recommends libzip-dev; \
+    apt-get install -y --no-install-recommends libzip-dev unzip; \
     rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
