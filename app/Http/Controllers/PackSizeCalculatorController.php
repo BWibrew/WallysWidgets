@@ -17,7 +17,7 @@ class PackSizeCalculatorController extends Controller
     public function calculator(Request $request): View
     {
         $request->validate([
-            'widget-count' => 'numeric',
+            'widget-count' => 'numeric|gt:0',
         ]);
 
         $widgetCount = $request->input('widget-count');

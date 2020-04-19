@@ -36,4 +36,14 @@ class PackSizeCalculatorTest extends TestCase
             'widget-count' => 'The widget-count must be a number.',
         ]);
     }
+
+    public function testWidgetCountIsGreaterThanZero(): void
+    {
+        $response = $this->get('/?widget-count=0');
+
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors([
+            'widget-count' => 'The widget-count must be greater than 0.',
+        ]);
+    }
 }
